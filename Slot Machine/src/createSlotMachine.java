@@ -1,30 +1,32 @@
 import java.util.*;
 public class createSlotMachine
 	{
-		static int col;
-		static Symbol [][] machine = new Symbol[3][3];
+		static String [][] machineName = new String[3][3];
+		static int [][] machineValue = new int [3][3];
 		static ArrayList <Symbol> symbols = new ArrayList <Symbol>();
+		static boolean middle, outside, all;
 		public static void main(String[] args)
 			{
-			
+			all = true;
 			addSymbols();
 			pullLever();
+			determineProfit();
 
 			}
 
 		private static void addSymbols()
 			{
 			
-				symbols.add(new Symbol("cherry", 25, 22.5, false, 1));
-				symbols.add(new Symbol("orange", 10, 40.0, false, 1));
-				symbols.add(new Symbol("banana", 75, 12.0, false, 1));
-				symbols.add(new Symbol("dog", 200, 5.0, false, 1));
-				symbols.add(new Symbol("cat", 700, 2.5, false, 1));
-				symbols.add(new Symbol("frodo", 1, 1.0, false, 1));
-				symbols.add(new Symbol("mac n' cheese", 1000, .5, false, 1));
+				symbols.add(new Symbol("cherry", 60, 22.5, false, 1));
+				symbols.add(new Symbol("orange", 25, 40.0, false, 1));
+				symbols.add(new Symbol("banana", 185, 12.0, false, 1));
+				symbols.add(new Symbol("dog", 500, 5.0, false, 1));
+				symbols.add(new Symbol("cat", 1750, 2.5, false, 1));
+				symbols.add(new Symbol("frodo", 12000, 1.0, false, 1));
+				symbols.add(new Symbol("mac n' cheese", 25000, .5, false, 1));
 				symbols.add(new Symbol("boomerang", 750, 1.5, false, 1));
-				symbols.add(new Symbol("flag", 50, 12.5, false, 1));
-				symbols.add(new Symbol("aglet", 5000, .1, false, 1));
+				symbols.add(new Symbol("flag", 125, 12.5, false, 1));
+				symbols.add(new Symbol("aglet", 50000, .1, false, 1));
 				symbols.add(new Symbol("aircraft carrier", 350, 2.6, false, 1));
 				
 			}
@@ -32,104 +34,131 @@ public class createSlotMachine
 		private static void pullLever()
 			{
 			System.out.println("Spinning");
-			Timer dot = new Timer();
 			for (int row = 0; row < 3; row++)
 				{
-				double spin = (double)(Math.random()*100.0 + .1);
-				if (spin < 22.5)
+				for (int col = 0; col < 3; col++)
 					{
-						machine [row][col] = symbols.get(0);
-					}
-				else if (spin >=22.5 && spin < 62.5)
-					{
-						machine [row][col] = symbols.get(1);
-					}
-				else if (spin >= 62.5 && spin < 74.5)
-					{
-						machine [row][col] = symbols.get(2);
-					}
-				else if (spin >= 74.5 && spin < 79.5)
-					{
-						machine [row][col] = symbols.get(3);
-					}
-				else if (spin >= 79.5 && spin < 82.0)
-					{
-						machine [row][col] = symbols.get(4);
-					}
-				else if (spin >= 82.0 && spin < 83.0)
-					{
-						machine [row][col] = symbols.get(5);
-					}
-				else if (spin >= 83.0 && spin < 83.5)
-					{
-						machine [row][col] = symbols.get(6);
-					}
-				else if (spin >= 83.5 && spin < 85.0)
-					{
-						machine [row][col] = symbols.get(7);
-					}
-				else if (spin >= 85.0 && spin < 97.5)
-					{
-						machine [row][col] = symbols.get(8);
-					}
-				else if (spin >= 97.5 && spin < 97.6)
-					{
-						machine [row][col] = symbols.get(9);
-					}
-				else
-					{
-						machine [row][col] = symbols.get(10);
-					}
-				for (col = 0; col < 3; col++)
-					{
-						spin = (double)(Math.random()*100.0 + .1);
+						double spin = (double)(Math.random()*100.0 + .1);
 						if (spin < 22.5)
 							{
-								machine [row][col] = symbols.get(0);
+								machineName [row][col] = symbols.get(0).getName();
+								machineValue [row][col] = symbols.get(0).getValue();
 							}
 						else if (spin >=22.5 && spin < 62.5)
 							{
-								machine [row][col] = symbols.get(1);
+								machineName [row][col] = symbols.get(1).getName();
+								machineValue [row][col] = symbols.get(1).getValue();
 							}
 						else if (spin >= 62.5 && spin < 74.5)
 							{
-								machine [row][col] = symbols.get(2);
+								machineName [row][col] = symbols.get(2).getName();
+								machineValue [row][col] = symbols.get(2).getValue();
 							}
 						else if (spin >= 74.5 && spin < 79.5)
 							{
-								machine [row][col] = symbols.get(3);
+								machineName [row][col] = symbols.get(3).getName();
+								machineValue [row][col] = symbols.get(3).getValue();
 							}
 						else if (spin >= 79.5 && spin < 82.0)
 							{
-								machine [row][col] = symbols.get(4);
+								machineName [row][col] = symbols.get(4).getName();
+								machineValue [row][col] = symbols.get(4).getValue();
 							}
 						else if (spin >= 82.0 && spin < 83.0)
 							{
-								machine [row][col] = symbols.get(5);
+								machineName [row][col] = symbols.get(5).getName();
+								machineValue [row][col] = symbols.get(5).getValue();
 							}
 						else if (spin >= 83.0 && spin < 83.5)
 							{
-								machine [row][col] = symbols.get(6);
+								machineName [row][col] = symbols.get(6).getName();
+								machineValue [row][col] = symbols.get(6).getValue();
 							}
 						else if (spin >= 83.5 && spin < 85.0)
 							{
-								machine [row][col] = symbols.get(7);
+								machineName [row][col] = symbols.get(7).getName();
+								machineValue [row][col] = symbols.get(7).getValue();
 							}
 						else if (spin >= 85.0 && spin < 97.5)
 							{
-								machine [row][col] = symbols.get(8);
+								machineName [row][col] = symbols.get(8).getName();
+								machineValue [row][col] = symbols.get(8).getValue();
 							}
 						else if (spin >= 97.5 && spin < 97.6)
 							{
-								machine [row][col] = symbols.get(9);
+								machineName [row][col] = symbols.get(9).getName();
+								machineValue [row][col] = symbols.get(9).getValue();
 							}
 						else
 							{
-								machine [row][col] = symbols.get(10);
+								machineName [row][col] = symbols.get(10).getName();
+								machineValue [row][col] = symbols.get(10).getValue();
 							}
 					}
 				}
+			for (int r = 0; r < 3; r++)
+				{
+				for (int c = 0; c < 3; c++)
+					{
+						System.out.print(machineName[r][c] + " ");
+					}
+				System.out.println("");
+				}
 			}
 		
+		private static void determineProfit()
+			{
+			if(middle)
+				{
+				if (machineName[1][0].equals(machineName[1][1]) && machineName[1][0].equals(machineName[1][2]))
+					{
+					System.out.println("Congratulations! You win! You receive " + machineValue[1][1] + " tokens!");
+					//tokens += machineValue[1][1];
+					}
+				else
+					{
+					System.out.println("Sorry! You lose!");
+					}
+				}
+			else if (outside)
+				{
+					if (machineName[0][0].equals(machineName[0][1]) && machineName[0][0].equals(machineName[0][2]))
+						{
+						System.out.println("Congratulations! You win! You receive " + machineValue[0][1] + " tokens!");
+						//tokens += machineValue[0][1];
+						}
+					else if (machineName[2][0].equals(machineName[2][1]) && machineName[2][0].equals(machineName[2][2]))
+						{
+							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+							//tokens += machineValue[2][1];
+						}
+					else
+						{
+						System.out.println("Sorry! You lose!");
+						}
+				}
+			else if (all)
+				{
+					if (machineName[1][0].equals(machineName[1][1]) && machineName[1][0].equals(machineName[1][2]))
+						{
+						System.out.println("Congratulations! You win! You receive " + machineValue[1][1] + " tokens!");
+						//tokens += machineValue[1][1];
+						}
+					else if (machineName[0][0].equals(machineName[0][1]) && machineName[0][0].equals(machineName[0][2]))
+						{
+						System.out.println("Congratulations! You win! You receive " + machineValue[0][1] + " tokens!");
+						//tokens += machineValue[0][1];
+						}
+					else if (machineName[2][0].equals(machineName[2][1]) && machineName[2][0].equals(machineName[2][2]))
+						{
+							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+							//tokens += machineValue[2][1];
+						}
+					else
+						{
+						System.out.println("Sorry! You lose!");
+						}
+				}
+			}
 
 	}
