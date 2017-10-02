@@ -35,18 +35,18 @@ public class createSlotMachine
 		public static void pullLever()
 			{
 			System.out.print("Spinning");
-			//for (int dot = 0; dot < 5; dot++)
-				//{
-				//try
-					//{
-						//TimeUnit.SECONDS.sleep(1);
-					//} 
-				//catch (InterruptedException e)
-					//{
-						//e.printStackTrace();
-					//}
-				//System.out.print(". ");
-				//}
+			for (int dot = 0; dot < 5; dot++)
+				{
+				try
+					{
+						TimeUnit.SECONDS.sleep(1);
+					} 
+				catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+				System.out.print(". ");
+				}
 			System.out.println("");
 			System.out.println("Here is the slot machine: ");
 			for (int lo = 0; lo < 22; lo++)
