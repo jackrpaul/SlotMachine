@@ -1,17 +1,17 @@
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 public class createSlotMachine
 	{
 		static String [][] machineName = new String[3][3];
 		static int [][] machineValue = new int [3][3];
 		static ArrayList <Symbol> symbols = new ArrayList <Symbol>();
-		static boolean middle, outside, all;
+		public static boolean middle, outside, all;
 		public static void main(String[] args)
 			{
 			all = true;
 			addSymbols();
 			pullLever();
 			determineProfit();
-
 			}
 
 		private static void addSymbols()
@@ -31,9 +31,27 @@ public class createSlotMachine
 				
 			}
 		
-		private static void pullLever()
+		public static void pullLever()
 			{
-			System.out.println("Spinning");
+			System.out.print("Spinning");
+			for (int dot = 0; dot < 5; dot++)
+				{
+				try
+					{
+						TimeUnit.SECONDS.sleep(1);
+					} catch (InterruptedException e)
+					{
+						e.printStackTrace();
+					}
+				System.out.print(". ");
+				}
+			System.out.println("Here is the slot machine: ");
+			System.out.println("");
+			for (int lo = 0; lo < 19; lo++)
+			{
+			System.out.print("=");
+			}
+			System.out.println("");
 			for (int row = 0; row < 3; row++)
 				{
 				for (int col = 0; col < 3; col++)
@@ -100,13 +118,19 @@ public class createSlotMachine
 				{
 				for (int c = 0; c < 3; c++)
 					{
-						System.out.print(machineName[r][c] + " ");
+						System.out.print(machineName[r][c] + " | ");
+					}
+				System.out.println("");
+				System.out.print("=");
+				for (int l = 0; l < 19; l++)
+					{
+					System.out.print("=");
 					}
 				System.out.println("");
 				}
 			}
 		
-		private static void determineProfit()
+		public static void determineProfit()
 			{
 			if(middle)
 				{
@@ -114,6 +138,16 @@ public class createSlotMachine
 					{
 					System.out.println("Congratulations! You win! You receive " + machineValue[1][1] + " tokens!");
 					//tokens += machineValue[1][1];
+					}
+				else if (machineName[0][0].equals(machineName[1][1]) && machineName[0][0].equals(machineName[2][2]))
+					{
+						System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+						//tokens += machineValue[0][0];
+					}
+				else if (machineName[2][0].equals(machineName[1][1]) && machineName[2][0].equals(machineName[0][2]))
+					{
+						System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+						//tokens += machineValue[2][0];
 					}
 				else
 					{
@@ -153,6 +187,16 @@ public class createSlotMachine
 						{
 							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
 							//tokens += machineValue[2][1];
+						}
+					else if (machineName[0][0].equals(machineName[1][1]) && machineName[0][0].equals(machineName[2][2]))
+						{
+							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+							//tokens += machineValue[0][0];
+						}
+					else if (machineName[2][0].equals(machineName[1][1]) && machineName[2][0].equals(machineName[0][2]))
+						{
+							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
+							//tokens += machineValue[2][0];
 						}
 					else
 						{

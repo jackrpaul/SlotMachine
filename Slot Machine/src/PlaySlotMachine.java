@@ -1,7 +1,7 @@
 import java.util.*;
 public class PlaySlotMachine
 	{
-		static int tokens, choice;
+		public static int tokens, choice;
 		static String name;
 		static boolean gameContinues;
 		public static void main(String[] args)
@@ -10,8 +10,8 @@ public class PlaySlotMachine
 			while (gameContinues)
 				{
 				takeTokens();
-				//pullLever();
-				//determineProfit();
+				createSlotMachine.pullLever();
+				createSlotMachine.determineProfit();
 				askForContinue();
 				}
 
@@ -21,10 +21,10 @@ public class PlaySlotMachine
 			Scanner userName = new Scanner(System.in);
 			System.out.println("What is your name?");
 			name = userName.nextLine();
-			System.out.println("Welcome, " + name + ", to the slot machine! You have 500 tokens to spend.");
+			System.out.println("Welcome, " + name + ", to the Incredibly Unfair Slot Machine! You have 500 tokens to spend.");
 			tokens = 500;
 			gameContinues = true;
-			System.out.println("It costs 3 tokens to bet on the middle row, 5 tokens to bet on the outside rows, or 7 tokens to bet on all three rows.");
+			System.out.println("It costs 3 tokens to bet on the middle row, 5 tokens to bet on the outside rows, or 7 tokens to bet on all three rows AND diagonals.");
 			}
 		private static void takeTokens()
 			{
@@ -42,21 +42,21 @@ public class PlaySlotMachine
 								{
 									System.out.println("Okay, you will be looking at the middle row.");
 									tokens -= 3;
-									//middle = true;
+									createSlotMachine.middle = true;
 									break;
 								}
 						case 2:
 								{
 									System.out.println("Okay, you will be looking at the outside rows.");
 									tokens -= 5;
-									//outside = true;
+									createSlotMachine.outside = true;
 									break;
 								}
 						case 3:
 								{
 									System.out.println("Okay, you will be looking at all of the rows.");
 									tokens -=7;
-									//all = true;
+									createSlotMachine.all = true;
 									break;
 								}
 						default:
