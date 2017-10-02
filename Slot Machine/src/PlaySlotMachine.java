@@ -7,6 +7,7 @@ public class PlaySlotMachine
 		public static void main(String[] args)
 			{
 			greetUser();
+			createSlotMachine.addSymbols();
 			while (gameContinues)
 				{
 				takeTokens();
@@ -22,7 +23,7 @@ public class PlaySlotMachine
 			System.out.println("What is your name?");
 			name = userName.nextLine();
 			System.out.println("Welcome, " + name + ", to the Incredibly Unfair Slot Machine! You have 500 tokens to spend.");
-			tokens = 500;
+			tokens = 200;
 			gameContinues = true;
 			System.out.println("It costs 3 tokens to bet on the middle row, 5 tokens to bet on the outside rows, or 7 tokens to bet on all three rows AND diagonals.");
 			}
@@ -40,7 +41,7 @@ public class PlaySlotMachine
 					{
 						case  1:
 								{
-									System.out.println("Okay, you will be looking at the middle row.");
+									System.out.println("Okay, you will be looking at just the middle row.");
 									tokens -= 3;
 									createSlotMachine.middle = true;
 									break;
@@ -54,7 +55,7 @@ public class PlaySlotMachine
 								}
 						case 3:
 								{
-									System.out.println("Okay, you will be looking at all of the rows.");
+									System.out.println("Okay, you will be looking at all of the rows including diagonals.");
 									tokens -=7;
 									createSlotMachine.all = true;
 									break;
@@ -85,11 +86,13 @@ public class PlaySlotMachine
 					case 1:
 							{
 							gameContinues = true;
+							break;
 							}
 					case 2:
 							{
 							System.out.println("Alright, you ended with " + tokens + ".");
 							gameContinues = false;
+							break;
 							}
 					default:
 							{

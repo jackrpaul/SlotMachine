@@ -2,9 +2,10 @@ import java.util.*;
 import java.util.concurrent.TimeUnit;
 public class createSlotMachine
 	{
-		static String [][] machineName = new String[3][3];
-		static int [][] machineValue = new int [3][3];
-		static ArrayList <Symbol> symbols = new ArrayList <Symbol>();
+		public static String [][] machineName = new String[3][3];
+		public static int [][] machineValue = new int [3][3];
+		public static int payout;
+		public static ArrayList <Symbol> symbols = new ArrayList <Symbol>();
 		public static boolean middle, outside, all;
 		public static void main(String[] args)
 			{
@@ -14,7 +15,7 @@ public class createSlotMachine
 			determineProfit();
 			}
 
-		private static void addSymbols()
+		public static void addSymbols()
 			{
 			
 				symbols.add(new Symbol("cherry", 60, 22.5, false, 1));
@@ -34,17 +35,18 @@ public class createSlotMachine
 		public static void pullLever()
 			{
 			System.out.print("Spinning");
-			for (int dot = 0; dot < 5; dot++)
-				{
-				try
-					{
-						TimeUnit.SECONDS.sleep(1);
-					} catch (InterruptedException e)
-					{
-						e.printStackTrace();
-					}
-				System.out.print(". ");
-				}
+			//for (int dot = 0; dot < 5; dot++)
+				//{
+				//try
+					//{
+						//TimeUnit.SECONDS.sleep(1);
+					//} 
+				//catch (InterruptedException e)
+					//{
+						//e.printStackTrace();
+					//}
+				//System.out.print(". ");
+				//}
 			System.out.println("");
 			System.out.println("Here is the slot machine: ");
 			for (int lo = 0; lo < 22; lo++)
@@ -52,6 +54,7 @@ public class createSlotMachine
 			System.out.print("=");
 			}
 			System.out.println("");
+			payout = 0;
 			for (int row = 0; row < 3; row++)
 				{
 				for (int col = 0; col < 3; col++)
@@ -136,18 +139,9 @@ public class createSlotMachine
 				{
 				if (machineName[1][0].equals(machineName[1][1]) && machineName[1][0].equals(machineName[1][2]))
 					{
-					System.out.println("Congratulations! You win! You receive " + machineValue[1][1] + " tokens!");
-					PlaySlotMachine.tokens += machineValue[1][1];
-					}
-				else if (machineName[0][0].equals(machineName[1][1]) && machineName[0][0].equals(machineName[2][2]))
-					{
-						System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-						PlaySlotMachine.tokens += machineValue[0][0];
-					}
-				else if (machineName[2][0].equals(machineName[1][1]) && machineName[2][0].equals(machineName[0][2]))
-					{
-						System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-						PlaySlotMachine.tokens += machineValue[2][0];
+					payout += machineValue[1][0];
+					System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+					PlaySlotMachine.tokens += payout;
 					}
 				else
 					{
@@ -158,13 +152,15 @@ public class createSlotMachine
 				{
 					if (machineName[0][0].equals(machineName[0][1]) && machineName[0][0].equals(machineName[0][2]))
 						{
-						System.out.println("Congratulations! You win! You receive " + machineValue[0][1] + " tokens!");
-						PlaySlotMachine.tokens += machineValue[0][1];
+						payout += machineValue[0][0];
+						System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+						PlaySlotMachine.tokens += payout;
 						}
 					else if (machineName[2][0].equals(machineName[2][1]) && machineName[2][0].equals(machineName[2][2]))
 						{
-							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-							PlaySlotMachine.tokens += machineValue[2][1];
+							payout += machineValue[2][0];
+							System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+							PlaySlotMachine.tokens += payout;
 						}
 					else
 						{
@@ -175,28 +171,33 @@ public class createSlotMachine
 				{
 					if (machineName[1][0].equals(machineName[1][1]) && machineName[1][0].equals(machineName[1][2]))
 						{
-						System.out.println("Congratulations! You win! You receive " + machineValue[1][1] + " tokens!");
-						PlaySlotMachine.tokens += machineValue[1][1];
+						payout += machineValue[1][0];
+						System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+						PlaySlotMachine.tokens +=payout;
 						}
 					else if (machineName[0][0].equals(machineName[0][1]) && machineName[0][0].equals(machineName[0][2]))
 						{
-						System.out.println("Congratulations! You win! You receive " + machineValue[0][1] + " tokens!");
-						PlaySlotMachine.tokens += machineValue[0][1];
+						payout += machineValue[0][0];
+						System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+						PlaySlotMachine.tokens += payout;
 						}
 					else if (machineName[2][0].equals(machineName[2][1]) && machineName[2][0].equals(machineName[2][2]))
 						{
-							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-							PlaySlotMachine.tokens += machineValue[2][1];
+							payout += machineValue[2][0];
+							System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+							PlaySlotMachine.tokens += payout;
 						}
 					else if (machineName[0][0].equals(machineName[1][1]) && machineName[0][0].equals(machineName[2][2]))
 						{
-							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-							PlaySlotMachine.tokens += machineValue[0][0];
+							payout += machineValue[0][0];
+							System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+							PlaySlotMachine.tokens += payout;
 						}
 					else if (machineName[2][0].equals(machineName[1][1]) && machineName[2][0].equals(machineName[0][2]))
 						{
-							System.out.println("Congratulations! You win! You receive " + machineValue[2][1] + " tokens!");
-							PlaySlotMachine.tokens += machineValue[2][0];
+							payout += machineValue[2][0];
+							System.out.println("Congratulations! You win! You receive " + payout + " tokens!");
+							PlaySlotMachine.tokens += payout;
 						}
 					else
 						{
