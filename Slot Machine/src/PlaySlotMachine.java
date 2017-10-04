@@ -15,7 +15,6 @@ public class PlaySlotMachine
 				createSlotMachine.determineProfit();
 				askForContinue();
 				}
-
 			}
 		private static void greetUser()
 			{
