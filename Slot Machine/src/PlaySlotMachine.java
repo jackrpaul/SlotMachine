@@ -42,14 +42,14 @@ public class PlaySlotMachine
 								{
 									System.out.println("Okay, you will be looking at just the middle row.");
 									tokens -= 3;
-									createSlotMachine.middle = true;
+									createSlotMachine.middleRow = true;
 									break;
 								}
 						case 2:
 								{
 									System.out.println("Okay, you will be looking at the outside rows.");
 									tokens -= 5;
-									createSlotMachine.outside = true;
+									createSlotMachine.outsideRow = true;
 									break;
 								}
 						case 3:

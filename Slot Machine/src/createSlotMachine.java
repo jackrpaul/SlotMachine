@@ -6,10 +6,9 @@ public class createSlotMachine
 		public static int [][] machineValue = new int [3][3];
 		public static int payout;
 		public static ArrayList <Symbol> symbols = new ArrayList <Symbol>();
-		public static boolean middle, outside, all;
+		public static boolean middleRow, outsideRow, all;
 		public static void main(String[] args)
 			{
-			all = true;
 			addSymbols();
 			pullLever();
 			determineProfit();
@@ -135,7 +134,7 @@ public class createSlotMachine
 		
 		public static void determineProfit()
 			{
-			if(middle)
+			if(middleRow)
 				{
 				if (machineName[1][0].equals(machineName[1][1]) && machineName[1][0].equals(machineName[1][2]))
 					{
@@ -148,7 +147,7 @@ public class createSlotMachine
 					System.out.println("Sorry! You lose!");
 					}
 				}
-			else if (outside)
+			else if (outsideRow)
 				{
 					if (machineName[0][0].equals(machineName[0][1]) && machineName[0][0].equals(machineName[0][2]))
 						{
